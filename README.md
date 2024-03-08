@@ -34,7 +34,8 @@ from langchain.llms import Bedrock
 
 
 Add the code to create a LangChain Bedrock client with streaming enabled.
-def get_llm(streaming_callback):
+
+   def get_llm(streaming_callback):
     model_kwargs = {
         "max_tokens": 4000,
         "temperature": 0,
