@@ -20,7 +20,8 @@ This application consists of two files: one for the Streamlit front end, and one
  
 
 **Create the library script**
-First we will create the supporting library to connect the Streamlit front end to the Bedrock back end.
+
+First, we will create the supporting library to connect the Streamlit front end to the Bedrock back end.
 
 Navigate to the workshop/labs/streaming folder, and open the file streaming_lib.py
 
