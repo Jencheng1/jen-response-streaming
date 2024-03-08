@@ -60,6 +60,8 @@ Add the code to create a LangChain Bedrock client with streaming enabled.
 Add this function to call Bedrock and handle the streaming response.
 
 This function calls Bedrock with the streaming invocation method. As response chunks are returned, it passes the chunk's text to the provided callback method.
+
+
 def get_streaming_response(prompt, streaming_callback):
     conversation_with_summary = ConversationChain(
         llm=get_llm(streaming_callback)
@@ -82,6 +84,8 @@ In the same folder as your lib file, open the file streaming_app.py
 Add the import statements.
 
 These statements allow us to use Streamlit elements and call functions in the backing library script.
+
+
 import streaming_lib as glib  # reference to local lib script
 import streamlit as st
 from langchain.callbacks import StreamlitCallbackHandler
@@ -92,6 +96,8 @@ from langchain.callbacks import StreamlitCallbackHandler
 Add the page title, configuration, and two-column layout.
 
 Here we are setting the page title on the actual page and the title shown in the browser tab.
+
+
 st.set_page_config(page_title="Response Streaming")  # HTML title
 st.title("Response Streaming")  # page title
 
@@ -101,6 +107,8 @@ st.title("Response Streaming")  # page title
 Add the input elements.
 
 We are creating a multiline text box and button to get the user's prompt and send it to Bedrock.
+
+
 input_text = st.text_area("Input text", label_visibility="collapsed")
 go_button = st.button("Go", type="primary")  # display a primary button
 
@@ -111,15 +119,13 @@ Add the output elements.
 
 We use the if block below to handle the button click.
 We create an empty streamlit container and pass it to the StreamlitCallbackHandler object so it can display output as it is generated.
-We pass the StreamlitCallbackHandler to the backing function so it can handle responses as streaming chunks are returened.
+We pass the StreamlitCallbackHandler to the backing function so it can handle responses as streaming chunks are returned.
+
 if go_button:  # code in this if block will be run when the button is clicked
-    #use an empty container for streaming output
+ #use an empty container for streaming output
     st_callback = StreamlitCallbackHandler(st.container())
     streaming_response = glib.get_streaming_response(prompt=input_text, streaming_callback=st_callback)
 
-
-
- 
 
 Save the file.
 Superb! Now you are ready to run the application!
